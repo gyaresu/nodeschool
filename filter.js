@@ -1,14 +1,14 @@
-module.exports = dirReader;
+var fs = require('fs')
+var re = new RegExp('\\.' + process.argv[3] + '$')
 
-function dirReader(directory, extension, err) {
-  var fs = require('fs')
-  var re = new RegExp('\\.' + extension + '$');
+module.exports = function (dir, filter, callback) {
 
-  fs.readdir(directory, function (err, list) {
-    if (err) return err;
-    for (var i = 0; i < list.length; i++) {
-      if (re.test(list[i]))
-        console.log(list[i]);
+  fs.readdir(process.argv[2], function (err, files) {
+    if (err) 
+      return callback(err);
+    for (var i = 0; i < files.length; i++) {
+      if (re.test(files[i]))
+        console.log(files[i])
     }
   });
 };
