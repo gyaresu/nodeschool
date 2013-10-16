@@ -1,5 +1,5 @@
-var http = require('http');
-var url = require('url');
+var http  = require('http');
+var url   = require('url');
 
 var server = http.createServer(function (req, res) {
   if (req.url == '/api/parsetime')
