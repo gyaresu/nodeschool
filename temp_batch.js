@@ -18,16 +18,12 @@ fs.readFile(file, 'utf8', function(err,data) {
      commands.push(z)
     }
   }
-  console.log(commands)
-  db.batch(commands, function (err) {
-    if (err) throw err
-    console.log("Woot!")
-  })
+
+  
 })
 
-//db.get('@izs', function (err, value) {
-//  console.log('This is @izs value:', value)
-//  db.close()
-//})
-
-
+db.batch(commands, function (err) {
+  if (err) 
+    throw err
+  db.close()
+})

@@ -1,0 +1,4 @@
+put,@izs,blah
+put,@tmpvar,wooble
+put,@mrbruning,max
+del,@darachennis
