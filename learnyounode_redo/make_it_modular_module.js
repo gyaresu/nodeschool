@@ -1,16 +1,13 @@
-var fs = require('fs');
-var path = require('path');
-
-module.exports = function (dirname, ext) {
-  console.log("The beginning of the export");
-  fs.readdir(dirname, ext, function (err, files) {
-    console.log("The beginning of the fs.readdir");
-    files.forEach( function(item) {
-      var results = [];
-      if (path.extname(item) == "." + ext)
-        results.append(item);
-        console.log(item);
-      return results;
+module.exports = function (dirname, ext, callback) {
+  var fs = require('fs');
+  var path = require('path');
+  fs.readdir(dirname, function (err, files) {
+    if (err)
+      return callback(err);
+    //console.log("The beginning of the fs.readdir");
+    files = files.filter( function(item) {
+      return path.extname(item) == "." + ext;
     });
+    return callback(null, files);
   });
 };
