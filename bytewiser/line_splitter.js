@@ -5,11 +5,13 @@ var temp = 0;
 
 fs.readFile(process.argv[2], function (err, data) {
   if (err) throw err;
-  for (var i = 0; i < data.length; i++) {
+  for (var i = 0; i <= data.length; i++) {
     if (data[i] === 10) {
       console.log(data.slice(temp,i));
       i++;
       temp = i;
+    } else if (i === data.length) {
+      console.log(data.slice(temp,data.length));
     }
   }
 });
