@@ -1,0 +1,28 @@
+{
+  "name": "makemehapi",
+  "version": "1.0.0",
+  "description": "Running the nodeschool https://github.com/hapijs/makemehapi",
+  "main": "1_hello_hapi.js",
+  "dependencies": {
+    "handlebars": "^2.0.0",
+    "hapi": "^7.5.0",
+    "rot13-stream": "0.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:gyaresu/makemehapi.git"
+  },
+  "keywords": [
+    "hapi"
+  ],
+  "author": "Gareth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gyaresu/makemehapi/issues"
+  },
+  "homepage": "https://github.com/gyaresu/makemehapi"
+}
