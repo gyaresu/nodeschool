@@ -26,9 +26,10 @@
 
 module.exports = function checkUsersValid(goodUsers) {
 	return function(submittedUsers) {
-		goodUsers.some(function (user) {
-			submittedUsers.every(function (check) {
-				return;
+		return submittedUsers.every(function (good) {
+			return goodUsers.some(function (check) {
+				//console.log(good.id, " and ", check.id);
+				return good.id === check.id;
 			});
 		} );
 	};
