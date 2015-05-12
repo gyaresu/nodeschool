@@ -1,8 +1,7 @@
 var slice = Array.prototype.slice;
 
 function logger(namespace) {
-    return function(args) {
-        //console.log(slice.call(arguments).join(' '));
+    return function() {
         return console.log(namespace + ' ' + slice.call(arguments).join(' '));
     };
 }
