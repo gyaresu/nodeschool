@@ -1,4 +1,3 @@
-// add this and note how much OVERTHINKING you put into the problem
 function *factorial(f) {
   let sum = 1
   for (var i = 1; i <= f; ++i) {
