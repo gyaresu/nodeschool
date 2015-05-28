@@ -1,5 +1,5 @@
 function *factorial(f) {
-  let sum = 1
+  var sum = 1
   for (var i = 1; i <= f; ++i) {
     yield sum = sum * i
   }
