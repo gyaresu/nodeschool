@@ -1,11 +1,11 @@
 function *foo () {
-  var stop = yield 'woo';
+  var stop = yield 'woo'
   console.log(stop, 'inside foo')
 }
-var G = foo();
+var G = foo()
 
-console.log( G.next() );
+console.log( G.next() )
 // { value: 'woo', done: false }
-console.log( G.next('bar') );
+console.log( G.next('bar') )
 // 'bar', 'inside foo'
 // { value: undefined, done: true }
