@@ -1,33 +1,28 @@
 var http = require('http')
-//var async = require('async')
 var bl = require('bl')
-
+var map = require('map-async')
 var args = process.argv.slice(2)
-var count = 0
 
-//console.log(args)
-
-function doStuff(cb) {
-  var result = []
-  args.forEach(function (err, data) {
-    if (err) {
-      console.error(err)
-    }
-    console.log(data)
-    http.get(data, function (res) {
-      return res.pipe(bl(function (e, chunk) {
-        if (e) {
-          return err
-        }
-        result.push(chunk)
-      }))
-    })
-    ++count
+function printResults (error, results) {
+  if (error) {
+    console.log(error)
+  }
+  results.forEach(function (result) {
+    console.log(result)
   })
 }
 
-function callback(r) {
-  console.log(r)
+function httpGet (url, cb) {
+  http.get(url, function (res) {
+    res.pipe(bl(function (e, data) {
+      if (e) {
+        return cb(e)
+      }
+      cb(e, data.toString())
+    }))
+  }).on('error', function(e) {
+    console.log('Error:' + e.message)
+  })
 }
 
-doStuff(callback)
+map(args, httpGet, printResults)
