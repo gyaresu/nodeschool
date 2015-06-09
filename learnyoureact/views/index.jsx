@@ -1,7 +1,7 @@
 var React = require('react')
 
 var TodoBox = React.createClass({
-  displayName: 'Todo',
+  displayName: 'TodoBox',
   render: function() {
     return (
       <div className="todoBox">
@@ -17,9 +17,29 @@ var TodoList = React.createClass({
   displayName: 'TodoList',
   render: function () {
     return (
-      <div className = "todoList">
-        I am a TodoList.
+      <div className="todoList">
+        <table style={{border: "2px solid black"}}>
+          <tbody>
+            <Todo title="Shopping">Milk</Todo>
+            <Todo title="Hair cut">13:00</Todo>
+          </tbody>
+        </table>
       </div>
+    )
+  }
+})
+
+var Todo = React.createClass({
+  displayName: 'Todo',
+  propTypes: {
+    title: React.PropTypes.string.isRequired
+  },
+  render: function () {
+    return (
+      <tr>
+        <td style={{border: "1px solid black"}}>{this.props.title}</td>
+        <td style={{border: "1px solid black"}}>{this.props.children}</td>
+      </tr>
     )
   }
 })
@@ -28,7 +48,7 @@ var TodoForm = React.createClass({
   displayName: 'TodoForm',
   render: function () {
     return (
-      <div className = "todoForm">
+      <div className="todoForm">
         I am a TodoForm.
       </div>
     )
