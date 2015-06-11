@@ -19,8 +19,8 @@ require('node-jsx').install()
 var TodoBox = require('./views/index.jsx')
 
 var data = [ /* -- first -- */
-  {id: 'test1', title: 'Shopping', detail: process.argv[3]},
-  {id: 'test2', title: 'Hair cut', detail: process.argv[4]}
+  {title: 'Shopping', detail: process.argv[3]},
+  {title: 'Hair cut', detail: process.argv[4]}
 ]
 
 app.use('/bundle.js', function(req, res) {
