@@ -29,7 +29,7 @@ var TodoList = React.createClass({
   displayName: 'TodoList',
   render: function () {
     var todo = this.props.data.map(function(obj) {
-      return <Todo id={obj.id} key={obj.title} title={obj.title}>{obj.detail}</Todo>
+      return <Todo key={obj.title} title={obj.title}>{obj.detail}</Todo>
     })
     return (
       <div className="todoList">
