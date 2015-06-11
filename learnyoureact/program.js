@@ -18,9 +18,9 @@ app.engine('jsx', require('express-react-views').createEngine())
 require('node-jsx').install()
 var TodoBox = require('./views/index.jsx')
 
-var data = [
-  {title: 'Shopping', detail: process.argv[3]},
-  {title: 'Hair cut', detail: process.argv[4]}
+var data = [ /* -- first -- */
+  {id: 'test1', title: 'Shopping', detail: process.argv[3]},
+  {id: 'test2', title: 'Hair cut', detail: process.argv[4]}
 ]
 
 app.use('/bundle.js', function(req, res) {
@@ -33,12 +33,12 @@ app.use('/bundle.js', function(req, res) {
 
 app.use('/', function(req, res) {
   var initialData = JSON.stringify(data)
-  var markup = React.renderToString(React.createElement(TodoBox, {data: data}))
+  var markup = React.renderToString(React.createElement(TodoBox, {data: data})) /* -- second -- */
 
   res.setHeader('Content-Type', 'text/html')
 
   var html = React.renderToStaticMarkup(body(null,
-    div({id: 'app', dangerouslySetInnerHTML: {__html: markup}}),
+    div({id: 'app', dangerouslySetInnerHTML: {__html: markup}}), /* -- fourth -- */
     script({id: 'initial-data',
             type: 'text/plain',
             'data-json': initialData

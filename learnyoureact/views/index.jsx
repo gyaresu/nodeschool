@@ -17,7 +17,7 @@ var TodoList = React.createClass({
   displayName: 'TodoList',
   render: function () {
     var todo = this.props.data.map(function(obj) {
-      return <Todo key={obj.title} title={obj.title}>{obj.detail}</Todo>
+      return <Todo id={obj.id} key={obj.title} title={obj.title}>{obj.detail}</Todo>
     })
     return (
       <div className="todoList">
@@ -34,7 +34,8 @@ var TodoList = React.createClass({
 var Todo = React.createClass({
   displayName: 'Todo',
   propTypes: {
-    title: React.PropTypes.string.isRequired
+    title: React.PropTypes.string.isRequired,
+    id: React.PropTypes.string.isRequired
   },
   getInitialState: function () {
     return {
@@ -42,8 +43,7 @@ var Todo = React.createClass({
     }
   },
   handleChange: function (e) {
-    //this.setState({checked: e.target.checked})
-    this.setState({checked: true})
+    this.setState({checked: e.target.checked})
   },
   render: function () {
     return (
@@ -68,8 +68,14 @@ var TodoForm = React.createClass({
 })
 
 var style = {
+  checkedTodo: {
+    textDecoration: 'line-through'
+  },
+  notCheckedTodo: {
+    textDecoration: 'none'
+  },
   tableContent: {
-    border: "1px solid black"
+    border: '1px solid black'
   }
 }
 
