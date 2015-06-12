@@ -3,18 +3,10 @@ var DOM = React.DOM
 var body = DOM.body
 var div = DOM.div
 var script = DOM.script
-
 var browserify = require('browserify')
-
 var express = require('express')
 var app = express()
 var path = require('path')
-
-app.set('port', (process.argv[2] || 3000))
-app.set('view engine', 'jsx')
-app.set('views', path.join(__dirname, '/views'))
-app.engine('jsx', require('express-react-views').createEngine())
-
 require('node-jsx').install()
 var TodoBox = require('./views/index.jsx')
 
@@ -22,6 +14,14 @@ var data = [ /* -- first -- */
   {title: 'Shopping', detail: process.argv[3]},
   {title: 'Hair cut', detail: process.argv[4]}
 ]
+
+app.set('port', (process.argv[2] || 3000))
+app.set('view engine', 'jsx')
+app.set('views', path.join(__dirname, '/views'))
+app.engine('jsx', require('express-react-views').createEngine())
+
+
+
 
 app.use('/bundle.js', function(req, res) {
   res.setHeader('Content-Type', 'application/javascript')
