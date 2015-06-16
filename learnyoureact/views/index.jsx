@@ -54,7 +54,7 @@ var TodoList = React.createClass({
     this.setState({data: newData})
   },
   render: function () {
-    var todo = this.props.data.map(function(obj) {
+    var todo = this.state.data.map(function(obj) {
       return <Todo key={obj.title} title={obj.title} onDelete={this.deleteTodo}>{obj.detail}</Todo>
     }.bind(this))
     return (
