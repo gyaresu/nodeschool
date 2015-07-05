@@ -19,11 +19,7 @@ board.on('ready', function () {
     pin: 'A0'
   })
 
-  temp.on('data', function (err, data) {
-    if (err) {
-      console.error(err)
-    }
-
-    t = data.celsius
+  temp.on('data', function () {
+    t = this.celsius
   })
 })
