@@ -13,6 +13,7 @@ board.on('ready', function () {
   piezo.noTone()
   var buttonState = false
 
+  console.log(buttonState)
   button.on('press', function () {
     buttonState = true
     led.stop().off()
@@ -20,7 +21,7 @@ board.on('ready', function () {
   })
 
   temp.on('data', function () {
-
+    console.log(this.celcius)
     if (buttonState === false && this.celsius > 50) {
       piezo.frequency(587, 500)
       led.strobe(1000)
