@@ -1,6 +1,6 @@
-var express = require('express')
-var path = require('path')
-var app = express()
+import express from 'express'
+let path = require('path')
+let app = express()
 
 app.set('port', (process.argv[2] || 3000))
 app.set('view engine', 'jsx')

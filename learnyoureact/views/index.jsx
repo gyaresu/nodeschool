@@ -1,8 +1,8 @@
-var React = require('react')
-var TodoList = require('./components/TodoList')
-var TodoForm = require('./components/TodoForm')
+import {React} from 'react'
+import {TodoList} from './components/TodoList'
+import {TodoForm} from './components/TodoForm'
 
-var TodoBox = React.createClass({
+export default React.createClass({
   displayName: 'TodoBox',
   render: function () {
     return (
@@ -14,5 +14,3 @@ var TodoBox = React.createClass({
     )
   }
 })
-
-module.exports = TodoBox

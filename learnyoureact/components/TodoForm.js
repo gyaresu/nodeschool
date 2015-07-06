@@ -1,6 +1,6 @@
-var React = require('react')
+import React from 'react'
 
-var TodoForm = React.createClass({
+export default React.createClass({
   displayName: 'TodoForm',
   render: function () {
     return (
@@ -10,5 +10,3 @@ var TodoForm = React.createClass({
     )
   }
 })
-
-module.exports = TodoForm
