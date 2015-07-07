@@ -9,22 +9,30 @@ board.on('ready', function () {
   var piezo = new five.Piezo(9)
   var led = new five.Led(13)
   var button = new five.Button(5)
-  led.stop().off()
-  piezo.noTone()
   var buttonState = false
 
-  console.log(buttonState)
   button.on('press', function () {
     buttonState = true
     led.stop().off()
     piezo.noTone()
   })
 
-  temp.on('data', function () {
-    console.log(this.celcius)
-    if (buttonState === false && this.celsius > 50) {
-      piezo.frequency(587, 500)
-      led.strobe(1000)
+  function trigger () {
+    console.log('Triggered')
+    piezo.frequency(587, 500)
+    led.on()
+  }
+
+  temp.on('data', function (err, data) {
+    if (err) {
+      throw err
+    }
+    console.log(data.celsius)
+    if (buttonState === false && data.celsius > 50) {
+      trigger()
+    } else if (buttonState === true && data.celsius < 50) {
+      buttonState = false
+      console.log('Reset')
     } else {
       led.stop().off()
       piezo.noTone()
