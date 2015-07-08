@@ -9,8 +9,11 @@ app.engine('jsx', require('express-react-views').createEngine())
 
 require('node-jsx').install()
 
+// Simulated data: This is where you'd call from a database
+var data = [{title: 'Shopping', detail: process.argv[3]}, {title: 'Hair cut', detail: process.argv[4]}]
+
 app.use('/', function (req, res) {
-  res.render('index', '')
+  res.render('index', {data: data})
 })
 
 app.listen(app.get('port'), function () {})
