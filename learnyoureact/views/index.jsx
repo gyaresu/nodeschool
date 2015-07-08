@@ -8,7 +8,7 @@ var TodoBox = React.createClass({
         <TodoList />
         <TodoForm />
       </div>
-    );
+    )
   }
 })
 
@@ -23,11 +23,14 @@ var TodoList = React.createClass({
           </tbody>
         </table>
       </div>
-    );
+    )
   }
-});
+})
 
 var Todo = React.createClass({
+  propTypes: {
+    title: React.PropTypes.string.isRequired
+  },
   render: function () {
     return (
       <tr>
@@ -35,8 +38,8 @@ var Todo = React.createClass({
         <td style={{border: '1px solid black'}}>{this.props.children}</td>
       </tr>
     )
-  }  
-});
+  }
+})
 
 var TodoForm = React.createClass({
   render: function () {
@@ -48,4 +51,4 @@ var TodoForm = React.createClass({
   }
 })
 
-module.exports = TodoBox;
+module.exports = TodoBox
