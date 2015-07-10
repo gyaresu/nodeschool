@@ -9,9 +9,9 @@ var style = {
 var TodoBox = React.createClass({
   render: function() {
     return (
-      <div className="todoBox">
+      <div className='todoBox'>
         <h1>Todos</h1>
-        <TodoList data = { this.props.data }/>
+        <TodoList data = {this.props.data}/>
         <TodoForm />
       </div>
     )
@@ -19,12 +19,12 @@ var TodoBox = React.createClass({
 })
 
 var TodoList = React.createClass({
-  render: function() {
+  render: function () {
     var todo = this.props.data.map(function (obj) {
-      return <Todo title={ obj.title } key={ obj.title }>{ obj.detail }</Todo>
+      return <Todo title={obj.title} key={obj.title}>{obj.detail}</Todo>
     })
     return (
-      <div className = 'todoList'>
+      <div className='todoList'>
         <table style={{border: '2px solid black'}}>
           <tbody>
             {todo}
