@@ -43,7 +43,7 @@ var Todo = React.createClass({
     return {checked: false}
   },
   handleChange: function () {
-    this.setState({ checked: !this.state.checked })
+    this.setState({ checked: !this.state.checked }) // solution uses a passed param
   },
   render: function () {
     return (
@@ -65,6 +65,5 @@ var TodoForm = React.createClass({
     )
   }
 })
-
 
 module.exports = TodoBox
