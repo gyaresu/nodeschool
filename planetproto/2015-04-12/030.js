@@ -1,26 +1,27 @@
 // -> Let's define three objects: 'machine' 'vehicle' and 'robot'
-var machine = {}
-var vehicle = {}
-var robot = {}
+var machine = {};
+var vehicle = {};
+var robot = {};
 
 // -> Make machine the prototype of vehicle
 // -> Make machine the prototype of robot
-__
+vehicle.__proto__ = machine;
+robot.__proto__ = machine;
 
 // -> What is `vehicle.motors`?
-claim(vehicle.motors, __);
+claim(vehicle.motors, undefined);
 
 // -> What is `robot.motors`?
-claim(robot.motors, __);
+claim(robot.motors, undefined);
 
 // -> Define a 'motors' property on machine, set this to 4
-__
+machine.motors = 4;
 
 // -> What is `vehicle.motors` now?
-claim(vehicle.motors, __);
+claim(vehicle.motors, 4);
 
 // -> What is `robot.motors`?
-claim(robot.motors, __);
+claim(robot.motors, 4);
 
 
 // ------------------------------------------------
