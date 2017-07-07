@@ -1,4 +1,4 @@
-// Time Server (10 of 19)
+// Time Server (10 of 13)
 const net = require('net')
 var strftime = require('strftime')
 var strftimeEDT = strftime.timezone('-0400')
