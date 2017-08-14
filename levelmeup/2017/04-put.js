@@ -1,33 +1,31 @@
 var level = require('level')
 
-module.exports = function (dbDir, cb) {
+
+module.exports = function (dbDir, obj, cb) {
     var db = level(dbDir)
-    var results = []
+    var keys = Object.keys(obj)
+    var values = Object.values(obj)
     var error
 
     db.on('error', function (err) {
         error = err
     })
 
-    var bullshit = function bullshit (i) {
-        db.get('key' + i, function (err, value) {
+    var puts = function puts (i) {
+        db.put(keys[i], values[i], function (err) {
             if (err) {
-                if (!err.notFound) {
-                    error = err
-                }
-            } else {
-                results.push(value)
+                return cb(err)
             }
 
-            if (i < 100 && !error) {
-                bullshit(i+1)
+            if (i < keys.length) {
+                puts(i+1)
             } else {
                 db.close(function (err) {
-                    cb(error || err, results)
+                    cb(error || err)
                 })
             }
         })
     }
 
-    bullshit(0)
+    puts(0)
 }
