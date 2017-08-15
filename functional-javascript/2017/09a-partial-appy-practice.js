@@ -1,11 +1,11 @@
-function add(a, b) {
-  console.log(a, b)
+function add (a, b) {
+  // console.log(a, b)
   return a + b
 }
 
-//function partialApply(fn, num) {
+// function partialApply(fn, num) {
 //  return add(num)
-//}
+// }
 
 var addTen = add.bind(null, 10)
 
