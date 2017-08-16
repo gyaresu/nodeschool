@@ -1,5 +1,6 @@
 var thing2 = { key: 'start'}
 var thing3 = { key: 'start'}
+var thing4 = { key: 'start'}
 
 function test () {
   function noChange (ref) {
@@ -30,15 +31,22 @@ function test () {
 // test2
 function test2 () {
   thing2.key = 'thing2'
+  console.log('inside test2', thing2.key)
 }
 test2()
-console.log(thing2.key)
+console.log('after test2()', thing2.key)
 
 // test3
 function test3 (obj) {
   obj = { key: 'test3'}
-  console.log(obj.key)
+  console.log('inside test3()', obj.key)
 }
 test3(thing3)
-console.log(thing3.key)
+console.log('after test3()', thing3.key)
 
+function test4 (key) {
+  key = 'test4'
+  console.log('inside test4', key)
+}
+test4(thing4.key)
+console.log('after test4', thing4.key)
