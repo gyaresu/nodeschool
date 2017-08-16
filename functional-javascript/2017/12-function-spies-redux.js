@@ -14,12 +14,13 @@ function Spy (target, method) {
   var blah = {}
   blah.count = 0
 
-  target[method] = function () {
-    // console.log(blah.count++, result.count++)
+  target[method] = function () { // execute this function and return
+    console.log(blah.count++, result.count++)
     // return originalTargetObject.apply(Spy, args)
     return fn.apply(this, arguments)
   }
-  return result // return result?
+  return result // Return result so now `var spy` has the count property
+                // which is incremented each time `console.error` is used
 }
 
 module.exports = Spy
