@@ -1,8 +1,11 @@
-function doThings () {
-  setTimeout(function () {
-    console.log('more things')
-    doThings()
-  }, 0)
+function doThings (count) {
+  console.log(count, typeof count)
+  if (count > 0) {
+    setTimeout(function () {
+      --count
+      doThings(count)
+    }, 0)
+  }
 }
 
 module.exports = doThings
