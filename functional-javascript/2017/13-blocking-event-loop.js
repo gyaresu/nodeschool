@@ -11,7 +11,7 @@ function repeat (operation, num) {
   if (num % 10 === 0) {
     setTimeout(function () {
       repeat(operation, --num)
-    })
+    }, 0)
   } else {
     repeat(operation, --num)
   }
