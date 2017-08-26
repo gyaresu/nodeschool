@@ -1,4 +1,4 @@
-const duplexer = require('duplexer')
+const duplexer = require('duplexer2')
 const through = require('through2')
 
 module.exports = (counter) => {
@@ -10,7 +10,11 @@ module.exports = (counter) => {
     // console.log(chunk.country)
     count[chunk.country] ? count[chunk.country] += 1 : count[chunk.country] = 1
     // console.log(count)
-    this.push(chunk)
+
+
+    // this.push(chunk) <--
+
+
     cb()
   }
 
@@ -22,11 +26,7 @@ module.exports = (counter) => {
   }
 
   // now finally create a writeable stream
-  let writeStream = through.obj(write)
-    .on('end', function (cb) {
-      counter.setCounts(count)
-      cb()
-    })
+  let writeStream = through.obj(write, end)
 
   // counter setCounts(count) // read stream has this as a method(?)
   return duplexer(writeStream, counter)
