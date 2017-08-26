@@ -1,10 +1,10 @@
 const duplexer2 = require('duplexer2')
-const through = require('through2').obj
+const through = require('through2')
 
 module.exports = (counter) => {
   let count = {}
 
-  // This function
+  // This function transforms chunks written to the `through2` writeStream
   function write (chunk, encoding, cb) {
     // a chunk looks like:
     // {"short":"NSW","name":"New South Wales","country":"AU"}
@@ -23,6 +23,8 @@ module.exports = (counter) => {
 
     So if writeStream is acting as both... that causes problems?
 
+    It's a Transform stream which should only be taking data in as a write stream?
+
     Something to look into further:
     https://nodejs.org/docs/latest/api/stream.html#stream_class_stream_transform
     */
@@ -35,7 +37,7 @@ module.exports = (counter) => {
     cb()
   }
 
-  let writeStream = through(write, end)
+  let writeStream = through({ objectMode: true }, write, end)
 
   return duplexer2({objectMode: true}, writeStream, counter)
 }
