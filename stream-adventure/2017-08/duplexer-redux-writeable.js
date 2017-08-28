@@ -18,3 +18,4 @@ module.exports = function (counter) {
   // console.log(typeof Writeable)
   return duplexer({objectMode: true}, input, counter)
 }
+
