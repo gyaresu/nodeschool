@@ -20,20 +20,14 @@ module.exports = function () {
 
   let current
 
-  // write function for through2
   function write (chunk, _, next) {
-    // if (chunk.length === 0) return next() // requied or you get a "SyntaxError: Unexpected end of JSON input" error
+    if (chunk.length === 0) return next() // requied or you get a SyntaxError: Unexpected end of JSON input" error
     let row = JSON.parse(chunk)
-    // console.log('first row: ', row, JSON.stringify(current)) // object { type: 'genre', name: 'cyberpunk' }
     if (row.length === 0) return next()
 
     if (row.type === 'genre') {
-      // console.log(row) // { type: 'genre', name: 'cyberpunk' }
       if (current) {
-        // console.log(`current: ${JSON.stringify(current)}`) // current: {"name":"cyberpunk","books":["Neuromancer","Snow Crash"]}
         this.push(JSON.stringify(current) + '\n')
-        // console.log('here?')
-        // console.log(`typeof current: ${typeof current}, current: ${JSON.stringify(current)}`)
       }
       current = {name: row.name, books: []}
     } else if (row.type === 'book') {
@@ -42,7 +36,6 @@ module.exports = function () {
     next()
   }
 
-  // final function call for through2
   function end (cb) {
     if (current) {
       this.push(JSON.stringify(current) + '\n')
@@ -59,3 +52,14 @@ module.exports = function () {
     gzip
   )
 }
+
+/* Result
+
+{"name":"cyberpunk","books":["Snow Crash","The Diamond Age","Accelerando","Heavy Weather","Neuromancer"]}
+{"name":"new wave","books":["Bug Jack Barron","The Heat Death of the Universe","Dangerous Visions"]}
+{"name":"time travel","books":["The Time Machine","A Connecticut Yankee in King Arthur's Court"]}
+{"name":"space opera","books":["Skylark","Void","A Deepness in the Sky"]}
+{"name":"apocalypse","books":["Alas, Babylon","Earth Abides","Riddley Walker"]}
+{"name":"alternate history","books":["Bring the Jubilee","The Man in the High Castle"]}
+
+*/
