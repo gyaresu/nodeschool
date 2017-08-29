@@ -27,7 +27,7 @@ module.exports = function () {
 
     if (row.type === 'genre') {
       if (current) {
-        this.push(JSON.stringify(current) + '\n')
+        this.push(JSON.stringify(current) + '\n') // omg der. It pushes back onto _this_ transform stream
       }
       current = {name: row.name, books: []}
     } else if (row.type === 'book') {

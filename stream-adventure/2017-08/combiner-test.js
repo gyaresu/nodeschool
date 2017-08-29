@@ -1,4 +1,5 @@
-let c = require('./combiner') // concat version
+// let c = require('./combiner')
+let c = require('./amaan75') // concat version
 let cStream = c()
 let fs = require('fs')
 
